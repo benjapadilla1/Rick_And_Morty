@@ -5,7 +5,9 @@ export default function SearchBar(props) {
    return (
       <div className={styles.searchDiv}>
          <input type='search' className={styles.searchBar} placeholder="Ingrese el personaje a buscar" />
-         <button className={styles.searchButton} onClick={onSearch}>Agregar</button>
+         <button className={styles.searchButton} onClick={onSearch}>
+            <i className="fas fa-search"></i>
+         </button>
       </div>
    );
 }
