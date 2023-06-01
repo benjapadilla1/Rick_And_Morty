@@ -1,3 +1,23 @@
+@font-face {
+    font-family: "Title";
+    src: url("../../../fonts/get_schwifty.ttf") format("truetype");
+}
+
+.title {
+    background: linear-gradient(to right, yellow, red);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px;
+    font-family: "Title", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 150px;
+    font-size: 64px;
+}
+
 .searchDiv {
     display: flex;
     justify-content: center;
@@ -10,8 +30,9 @@
     padding: 8px;
     border: 1px solid #ccc;
     box-shadow: 20px;
-    border-radius: 8px;
+    border-radius: 16px;
     color: #333;
+    /* background-color: rgba(132, 123, 123, 0.2); */
     background-color: #f1f1f1;
     font-size: 14px;
 }

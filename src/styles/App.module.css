@@ -1,32 +1,12 @@
-/* IMPORTAR LA FUENTE DE RICK AND MORTY */
-@font-face {
-    font-family: "Title";
-    src: url("../fonts/get_schwifty.ttf") format("truetype");
-}
-
 * {
     margin: 0;
     padding: 0;
 }
 
-.backgroundImage {
+body {
     background-image: url("../assets/rickAndMorty.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-}
-
-.title {
-    background: linear-gradient(to right, yellow, red);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 1px;
-    font-family: "Title", sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    height: 150px;
-    font-size: 64px;
+    background-attachment: fixed;
 }

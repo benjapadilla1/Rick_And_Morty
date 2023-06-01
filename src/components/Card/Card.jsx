@@ -4,7 +4,7 @@ export default function Card(props) {
    const { character, onClose } = props
    return (
       <div className={styles.card}>
-         <button onClick={onClose} className={styles.button}>&times;</button>
+         <button onClick={() => onClose(character.id)} className={styles.button}>&times;</button>
          <h3 className={styles.name}>{character.name.toUpperCase()}</h3>
          <img className={styles.image} src={character.image} alt={character.name} />
          <p className={styles.cardInfo}>{character.status}</p>
