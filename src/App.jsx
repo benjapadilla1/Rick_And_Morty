@@ -8,7 +8,13 @@ function App() {
   function onSearch(id) {
     axios(`https://rickandmortyapi.com/api/character/${id}`).then((({ data }) => {
       if (data.name) {
-        setCharacters((prev) => [...prev, data])
+        const repeat = characters.find((character => character.id === data.id))
+        if (repeat) {
+          alert("Este personaje ya se buscó")
+        }
+        else {
+          setCharacters((prev) => [...prev, data])
+        }
       } else {
         alert("No hay personajes con este id")
       }
