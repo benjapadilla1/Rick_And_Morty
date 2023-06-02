@@ -3,6 +3,8 @@ import Cards from './components/Card/Cards';
 import NavBar from './components/NavBar/NavBar';
 import "./styles/App.module.css"
 import axios from "axios"
+
+
 function App() {
   const [characters, setCharacters] = useState([])
   function onSearch(id) {
@@ -28,8 +30,7 @@ function App() {
   return (
     < >
       <NavBar onSearch={onSearch} />
-      <Cards characters={characters} onClose={onClose}
-      />
+      <Cards characters={characters} onClose={onClose} />
     </>
   );
 }

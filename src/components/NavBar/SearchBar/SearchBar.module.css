@@ -90,3 +90,44 @@
     background-color: aquamarine;
     border: 2px solid transparent;
 }
+
+.routerButton {
+    height: 40px;
+    display: inline-block;
+    padding: 10px 20px;
+    /* background-color: grey; */
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+    font-size: 14px;
+    font-weight: 800;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.routerButton:hover {
+    background-color: #2980b9;
+}
+
+.routerButton:hover i {
+    animation: jump 0.3s infinite alternate;
+}
+
+@keyframes jump {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-5px);
+    }
+}
+
+.divButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    gap: 15px;
+}
