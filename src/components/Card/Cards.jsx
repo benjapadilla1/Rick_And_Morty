@@ -5,7 +5,10 @@ export default function Cards(props) {
    return (
       <div className={styles.divCard}>
          {characters.map((character) => (
-            <Card key={character.id} character={character} onClose={onClose}
+            <Card
+               key={character.id}
+               character={character}
+               onClose={onClose}
             />
          ))}
       </div>

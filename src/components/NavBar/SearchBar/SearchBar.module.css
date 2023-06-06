@@ -110,7 +110,8 @@
     background-color: #2980b9;
 }
 
-.routerButton:hover i {
+.routerButton:hover i,
+.searchButton:hover i {
     animation: jump 0.3s infinite alternate;
 }
 

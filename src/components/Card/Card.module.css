@@ -49,6 +49,10 @@
     margin-bottom: 15px;
 }
 
+.status {
+    margin: 15px 0 15px 0;
+}
+
 .cardInfo {
     font-size: 18px;
     font-family: 'Times New Roman', Times, serif;
