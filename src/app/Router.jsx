@@ -6,14 +6,8 @@ import App from '../App'
 import Error from '../views/error/Error'
 import Form from '../components/Form/Form'
 export default function Router() {
-    const navigate = useNavigate()
-    // useEffect(() => {
-    //     !access && navigate("/")
-    // }, [access])
-
     return (
         <>
-            {/* {location.pathname === "/home" || location.pathname === "/detail/:id" && <NavBar />} */}
             <Routes>
                 <Route path="/" element={<Form />} />
                 <Route path='/home' element={<App />} />
