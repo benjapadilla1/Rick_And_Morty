@@ -14,6 +14,9 @@ export default function NavBar({ onSearch }) {
                 <NavLink to={"/home"}>
                     <button className={styles.routerButton}><i className='fas fa-home' ></i></button>
                 </NavLink>
+                <NavLink to={"/favorites"}>
+                    <button className={styles.routerButton}><i className='fas fa-star'></i></button>
+                </NavLink>
             </div>
         </>
     )
