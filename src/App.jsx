@@ -3,8 +3,9 @@ import Cards from './components/Card/Cards';
 import NavBar from './components/NavBar/NavBar';
 import "./styles/App.module.css"
 import axios from "axios"
-
+import { useDispatch } from "react-redux"
 function App() {
+  const dispatch = useDispatch()
   const [characters, setCharacters] = useState([])
   function onSearch(id) {
     axios(`https://rickandmortyapi.com/api/character/${id}`).then((({ data }) => {

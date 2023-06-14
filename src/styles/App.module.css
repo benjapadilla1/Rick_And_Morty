@@ -12,3 +12,18 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+
+.title {
+    background: linear-gradient(to right, yellow, red);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px;
+    font-family: "Title", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 150px;
+    font-size: 64px;
+}

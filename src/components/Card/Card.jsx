@@ -8,24 +8,22 @@ import { useEffect } from "react";
 function Card(props) {
    const [fav, setFav] = useState(false)
    const { character, onClose, addFavorite, removeFavorite, favorites } = props
-
+   useEffect(() => {
+      favorites.forEach((fav) => {
+         if (fav.id === id) {
+            setFav(true)
+         }
+      });
+   }, [favorites, character.id])
    function handleFavorite(character) {
       if (!fav) {
          addFavorite(character)
          setFav(true)
       } else {
-         removeFavorite(character)
+         removeFavorite(character.id)
          setFav(false)
       }
    }
-   useEffect(() => {
-      favorites.forEach((fav) => {
-         if (fav.id === fav.id) {
-            setFav(true)
-         }
-      });
-   }, [favorites])
-
    return (
       <div className={styles.card}>
          <button onClick={() => onClose(character.id)} className={styles.button}>&times;</button>
@@ -33,28 +31,30 @@ function Card(props) {
             <h3 className={styles.name}>{character.name.toUpperCase()}</h3>
             <img className={styles.image} src={character.image} alt={character.name} />
          </Link>
-         {/* HACER IF DE MUERTO O VIVO */}
-         <div className={styles.status}>
-            {character.status === "Dead" && (
-               <i className="fas fa-skull-crossbones fa-2x"></i>
-            )}
-            {character.status === "unknown" && (
-               <i className="fas fa-question fa-2x"></i>
-            )}
-            {character.status === "Alive" && (
-               <i className="fas fa-heart fa-2x "></i>
+         {/* MUERTO O VIVO */}
+         <div className={styles.cardSymbol}>
+            {character.status === "Dead" && <i className="fas fa-skull-crossbones fa-2x"></i>}
+            {character.status === "unknown" && <i className="fas fa-question fa-2x"></i>}
+            {character.status === "Alive" && <i className="fas fa-heart fa-2x"></i>}
+            {character.gender === "Male" && <i className="fas fa-solid fa-mars fa-2x"></i>}
+            {character.gender === "Genderless" && <i className="fas fa-question fa-2x"></i>}
+            {character.gender === "Female" && <i className="fas fa-sharp fa-venus fa-2x"></i>}
+         </div>
+         {/* <p className={styles.cardInfo}>{character.status}</p> */}
+         {/* <p className={styles.cardInfo}>{character.species}</p> */}
+         {/* <p className={styles.cardInfo}>{character.gender}</p> */}
+         {/* <p className={styles.origin}>{character.origin.name}</p> */}
+         <div>
+            {fav ? (
+               <span onClick={() => handleFavorite(character.id)}>
+                  <i className="fas fa-star fa-lg" style={{ color: "yellow" }} ></i>
+               </span>
+            ) : (
+               <span onClick={() => handleFavorite(character)}>
+                  <i className="fas fa-star fa-lg"></i>
+               </span>
             )}
          </div>
-         <p className={styles.cardInfo}>{character.status}</p>
-         <p className={styles.cardInfo}>{character.species}</p>
-         <p className={styles.cardInfo}>{character.gender}</p>
-         <p className={styles.origin}>{character.origin.name}</p>
-         {fav ? (
-            <button onClick={() => handleFavorite(character.id)}>💖</button>
-         ) : (
-
-            <button onClick={() => handleFavorite(character)}>❤</button>
-         )}
 
       </div>
    );
@@ -67,7 +67,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 const mapStateToProps = (state) => {
    return {
-      favorites: state.myFavorites
+      favorites: state.allCharacters
    }
 }
 

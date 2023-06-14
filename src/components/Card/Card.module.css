@@ -49,28 +49,9 @@
     margin-bottom: 15px;
 }
 
-.status {
-    margin: 15px 0 15px 0;
-}
-
-.cardInfo {
-    font-size: 18px;
-    font-family: 'Times New Roman', Times, serif;
-    background-color: #f1f1f1;
-    color: #333;
-    padding: 6px 10px;
-    border-radius: 4px;
-    display: inline-block;
-    margin-right: 5px;
-    margin-bottom: 5px;
-}
-
-.origin {
-    font-size: 18px;
-    font-family: 'Times New Roman', Times, serif;
-    background-color: #f1f1f1;
-    color: #333;
-    padding: 6px 10px;
-    border-radius: 4px;
-    margin-bottom: 5px;
+.cardSymbol {
+    /* display: block; */
+    color: black;
+    /* padding: 6px 10px; */
+    gap: 25px;
 }
