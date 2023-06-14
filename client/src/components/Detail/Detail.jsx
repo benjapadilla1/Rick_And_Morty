@@ -8,7 +8,7 @@ export default function Detail() {
     const [character, setCharacter] = useState({})
     console.log(character)
     useEffect(() => {
-        axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
+        axios(`http://127.0.0.1:5174/rickandmorty/character/${id}`).then(({ data }) => {
             if (data.name) {
                 setCharacter(data)
             } else {

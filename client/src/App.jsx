@@ -8,7 +8,7 @@ function App() {
   const dispatch = useDispatch()
   const [characters, setCharacters] = useState([])
   function onSearch(id) {
-    axios(`https://rickandmortyapi.com/api/character/${id}`).then((({ data }) => {
+    axios(`http://127.0.0.1:5174/rickandmorty/character/${id}`).then((({ data }) => {
       if (data.name) {
         const repeat = characters.find((character => character.id === data.id))
         if (repeat) {
