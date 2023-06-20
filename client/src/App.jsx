@@ -3,9 +3,7 @@ import Cards from './components/Card/Cards';
 import NavBar from './components/NavBar/NavBar';
 import "./styles/App.module.css"
 import axios from "axios"
-import { useDispatch } from "react-redux"
 function App() {
-  const dispatch = useDispatch()
   const [characters, setCharacters] = useState([])
   function onSearch(id) {
     axios(`http://127.0.0.1:5174/rickandmorty/character/${id}`).then((({ data }) => {
@@ -23,8 +21,9 @@ function App() {
     }))
   }
   function onClose(id) {
-    let diff = characters.filter(character => character.id !== parseInt(id))
+    let diff = characters.filter(character => character.id != parseInt(id))
     setCharacters(diff)
+    console.log(characters)
   }
 
   return (

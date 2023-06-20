@@ -10,7 +10,7 @@ function Card(props) {
    const { character, onClose, addFavorite, removeFavorite, favorites } = props
    useEffect(() => {
       favorites.forEach((fav) => {
-         if (fav.id === id) {
+         if (fav.id === character.id) {
             setFav(true)
          }
       });
@@ -40,10 +40,6 @@ function Card(props) {
             {character.gender === "Genderless" && <i className="fas fa-question fa-2x"></i>}
             {character.gender === "Female" && <i className="fas fa-sharp fa-venus fa-2x"></i>}
          </div>
-         {/* <p className={styles.cardInfo}>{character.status}</p> */}
-         {/* <p className={styles.cardInfo}>{character.species}</p> */}
-         {/* <p className={styles.cardInfo}>{character.gender}</p> */}
-         {/* <p className={styles.origin}>{character.origin.name}</p> */}
          <div>
             {fav ? (
                <span onClick={() => handleFavorite(character.id)}>

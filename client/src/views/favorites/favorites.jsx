@@ -1,22 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import fav from "./favorites.module.css"
 import { connect } from "react-redux"
 import Cards from '../../components/Card/Cards'
-import NavBar from '../../components/NavBar/NavBar'
 import { useDispatch } from 'react-redux'
 import { filterCards, orderCards, resetFavorites } from '../../redux/Actions'
 import { NavLink } from 'react-router-dom'
-function Favorites({ favorites }) {
+function Favorites({ favorites, filteredFavorites }) {
     console.log(favorites)
-    const [aux, setAux] = useState(false)
     const dispatch = useDispatch()
-
     const handleOrder = (e) => {
         dispatch(orderCards(e.target.value))
-        setAux(true)
     }
     const handleFilter = (e) => {
-        dispatch(filterCards(e.target.value))
+        const gender = e.target.value
+        dispatch(filterCards(gender))
     }
     const handleReset = () => {
         dispatch(resetFavorites())
@@ -24,9 +21,9 @@ function Favorites({ favorites }) {
 
     return (
         <div>
-            {/* <NavBar /> */}
-            <NavLink to={"/home"}>
-                <button >Volver</button>
+            <h1 className={fav.h1}>Favoritos</h1>
+            <NavLink to={"/home"} className={fav.divButton} >
+                <button className={fav.homeButton} >Volver <i className='fas fa-home'></i> </button>
             </NavLink>
             <div className={fav.selections}>
                 <select name="FiltrarOrder" placeholder='Orden' onChange={handleOrder} defaultValue="" className={fav.select}  >
@@ -43,14 +40,15 @@ function Favorites({ favorites }) {
                 </select>
                 <button onClick={handleReset} className={fav.resetButton} >Reset Filters</button>
             </div>
-            <Cards characters={favorites} />
+            <Cards characters={filteredFavorites} />
         </div>
     )
 }
 
 const mapStateToProps = (state) => {
     return {
-        favorites: state.myFavorites
+        favorites: state.myFavorites,
+        filteredFavorites: state.filteredFavorites
     }
 }
 

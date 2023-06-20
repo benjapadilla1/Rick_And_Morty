@@ -26,7 +26,7 @@ export default function Detail() {
                     <p className={customDetail.status}>Estado: {character.status}</p>
                     <p className={customDetail.species}>Especie: {character.species}</p>
                     <p className={customDetail.gender}>Género: {character.gender}</p>
-                    <p className={customDetail.origin}>Origen: {character.origin?.name}</p>
+                    <p className={customDetail.origin}>Origen: {character.origin}</p>
                     <div className={customDetail.imgContainer}>
                         <img src={character.image} alt={character.name} className={customDetail.img} />
                     </div>

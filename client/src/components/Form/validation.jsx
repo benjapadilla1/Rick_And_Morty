@@ -11,10 +11,10 @@ export default function validation(userData) {
         errors.email = "Debe ser un correo electrónico"
     }
     //PASSWORD
-    if (userData.password.length < 6 || userData.password.length > 10) {
-        errors.password = "La contraseña debe tener entre 6 y 10 caracteres"
-    } else if (!userData.password) {
+    if (!userData.password) {
         errors.password = "La contraseña no puede estar vacía";
+    } else if (userData.password.length < 6 || userData.password.length > 10) {
+        errors.password = "La contraseña debe tener entre 6 y 10 caracteres"
     } else if (!/\d/.test(userData.password)) {
         errors.password = "La contraseña tiene que contener un número "
     }
