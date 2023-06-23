@@ -6,21 +6,21 @@ import { addFavorite, removeFavorite } from "../../redux/Actions";
 import { useState } from "react";
 import { useEffect } from "react";
 function Card(props) {
-   const [fav, setFav] = useState(false)
    const { character, onClose, addFavorite, removeFavorite, favorites } = props
+   const [fav, setFav] = useState(false)
    useEffect(() => {
       favorites.forEach((fav) => {
          if (fav.id === character.id) {
             setFav(true)
          }
       });
-   }, [favorites, character.id])
+   }, [favorites])
    function handleFavorite(character) {
       if (!fav) {
          addFavorite(character)
          setFav(true)
       } else {
-         removeFavorite(character.id)
+         removeFavorite(character)
          setFav(false)
       }
    }
@@ -63,7 +63,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 const mapStateToProps = (state) => {
    return {
-      favorites: state.allCharacters
+      favorites: state.myFavorites
    }
 }
 

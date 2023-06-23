@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import form from "./Form.module.css"
 import validation from './validation'
 import { useNavigate } from 'react-router-dom'
+import axios from "axios"
 
 export default function Form() {
     const navigate = useNavigate()
+    const [access, setAccess] = useState(false)
     const [userData, setUserData] = useState({
         email: "",
         password: "",
@@ -23,6 +25,23 @@ export default function Form() {
             [e.target.name]: e.target.value
         }))
     }
+    useEffect(() => {
+        !access && navigate("/")
+    }, [!access])
+    async function login(userData) {
+        try {
+            const { email, password } = userData
+            const URL = "http://127.0.0.1:5174/rickandmorty/login"
+            const { data } = await axios(URL + `?email=${email}&password=${password}`)
+            const { access } = data
+            setAccess(data)
+            access && navigate("/home")
+        }
+        catch (error) {
+            console.log("Error", error)
+            alert("Ocurrió un error logeandote")
+        }
+    }
     function handleSubmit(e) {
         e.preventDefault()
         if (!errors.email && !errors.password) {
@@ -31,13 +50,7 @@ export default function Form() {
             alert("Datos incorrectos")
         }
     }
-    function login(userData) {
-        const EMAIL = 'ejemplo@gmail.com';
-        const PASSWORD = 'ejemplo1';
-        if (userData.password === PASSWORD && userData.email === EMAIL) {
-            navigate("/home")
-        }
-    }
+
     return (
         <div className={form.backgroundDiv}>
             <form className={form.formContainer} onSubmit={handleSubmit} >

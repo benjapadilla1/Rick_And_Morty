@@ -1,28 +1,28 @@
 import { ADD_FAV, FILTER, ORDER, REMOVE_FAV, RESET } from "./Actions";
 
-const initialState = { myFavorites: [], allCharacters: [], filteredFavorites: [] };
+const initialState = { myFavorites: [], allCharacters: [] };
 
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_FAV:
             return {
                 ...state,
-                myFavorites: [...state.myFavorites, action.payload], //te quedas con todos los personajes con el spread y se añade el nuevo con el payload
-                filteredFavorites: [...state.myFavorites, action.payload]
+                myFavorites: action.payload,
+                allCharacters: action.payload
             }
         case REMOVE_FAV:
             return {
                 ...state,
-                myFavorites: state.myFavorites.filter((character) => character.id !== Number(action.payload))
+                myFavorites: action.payload
             }
         case FILTER:
-            const filteredChar = state.myFavorites.filter((character) => character.gender === action.payload)
+            const filteredChar = state.allCharacters.filter((character) => character.gender === action.payload)
             return {
                 ...state,
-                filteredFavorites: filteredChar
+                myFavorites: filteredChar
             }
         case ORDER:
-            const orderChars = [...state.filteredFavorites]
+            const orderChars = [...state.myFavorites]
             if (action.payload === "A") {
                 orderChars.sort((a, b) => a.id - b.id)
             } else if (action.payload === "B") {
@@ -30,17 +30,16 @@ const rootReducer = (state = initialState, action) => {
             }
             return {
                 ...state,
-                filteredFavorites: orderChars
+                myFavorites: [...orderChars]
             }
         case RESET:
             return {
                 ...state,
-                filteredFavorites: state.myFavorites
+                myFavorites: state.allCharacters
             }
         default:
             return {
                 ...state,
-                myFavorites: state.allCharacters
             }
     }
 };

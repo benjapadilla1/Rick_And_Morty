@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import fav from "./favorites.module.css"
-import { connect } from "react-redux"
+// import { connect } from "react-redux"
 import Cards from '../../components/Card/Cards'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { filterCards, orderCards, resetFavorites } from '../../redux/Actions'
 import { NavLink } from 'react-router-dom'
-function Favorites({ favorites, filteredFavorites }) {
-    console.log(favorites)
+export default function Favorites() {
     const dispatch = useDispatch()
+    const favorites = useSelector((state) => state.myFavorites)
+    console.log(favorites)
+
     const handleOrder = (e) => {
         dispatch(orderCards(e.target.value))
     }
     const handleFilter = (e) => {
-        const gender = e.target.value
-        dispatch(filterCards(gender))
+        dispatch(filterCards(e.target.value))
     }
     const handleReset = () => {
         dispatch(resetFavorites())
@@ -40,16 +41,7 @@ function Favorites({ favorites, filteredFavorites }) {
                 </select>
                 <button onClick={handleReset} className={fav.resetButton} >Reset Filters</button>
             </div>
-            <Cards characters={filteredFavorites} />
+            <Cards characters={favorites} />
         </div>
     )
 }
-
-const mapStateToProps = (state) => {
-    return {
-        favorites: state.myFavorites,
-        filteredFavorites: state.filteredFavorites
-    }
-}
-
-export default connect(mapStateToProps, null)(Favorites)
